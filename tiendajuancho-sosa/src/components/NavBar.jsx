@@ -1,5 +1,6 @@
 import React from 'react';
 import 'materialize-css';
+import CartWidget from './CartWidget';
 // import ReactDOM from 'react-dom';
 
 class NavBar extends React.Component {
@@ -13,7 +14,7 @@ class NavBar extends React.Component {
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#about">Quienes Somos?</a></li>
                 <li><a href="#contacto">Contactenos</a></li>
-                <li><a href="#carrito"><i className="material-icons">shopping_cart</i></a> </li>
+                <CartWidget />
               </ul>
             </div>
           </nav>

@@ -11,7 +11,7 @@ const useCounter = (initialValue = 5) => {
 			setStock(stock-1)
 	}
 	
-	const remover = () => {
+	const quitar = () => {
 		setCount(count-1)
 		setStock(stock+1)
 	}
@@ -20,13 +20,13 @@ const useCounter = (initialValue = 5) => {
 		stock,
 		count,
 		agregar,
-		remover
+		quitar
 		}
 	}
 
 function Contador() {
 
-const { stock, count, agregar, remover } = useCounter()
+const { stock, count, agregar, quitar } = useCounter()
 
 return(
 	<>
@@ -47,7 +47,7 @@ return(
 						<tbody>
 							<tr>
 								<td>
-									<button className="btn-floating btn-small waves-light red lighten-1" onClick={() => remover()} disabled={(count === 0? true: false)}><i className="material-icons">remove</i></button>
+									<button className="btn-floating btn-small waves-light red lighten-1" onClick={() => quitar()} disabled={(count === 0? true: false)}><i className="material-icons">remove</i></button>
 								</td>
 								<td>{count}</td>
 								<td>

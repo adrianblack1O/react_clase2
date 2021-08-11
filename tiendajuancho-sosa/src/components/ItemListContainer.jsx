@@ -1,10 +1,10 @@
 import React from 'react';
-import Contador from './ItemCount';
+import ListaProductos from './ItemList';
 
 const ItemListContainer = (props) => {
     return <>
-    <h1>Hola <i>{props.nombre}</i>, bienvenidos!</h1>
-    <Contador />
+    <h1>Listado de productos: <i>{props.nombre}</i></h1>
+    <ListaProductos />
     </>
 }
 

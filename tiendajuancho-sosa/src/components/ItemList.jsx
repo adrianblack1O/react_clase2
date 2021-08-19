@@ -1,5 +1,6 @@
 import { productos } from './Datos'
 import { React, useState, useEffect } from 'react';
+import Producto from './Item'
 
 function ListaProductos () {
 
@@ -10,7 +11,7 @@ useEffect(() => {
 const traeProductos = () => {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
-			resolve(productos);
+      resolve (productos)
 		}, 2000);
 	});
 }
@@ -22,8 +23,11 @@ async function traigoProductos () {
   setCargando(false)
 }
 },[])
-
   return (
+    <>
+    {cargando===true &&
+    <div className="white-text">Cargando</div>
+    }
     <div className="row center-align">
       {cargando===true &&
         <div className="preloader-wrapper small active">
@@ -38,32 +42,23 @@ async function traigoProductos () {
           </div>
         </div>
       }
-      {products.map(producto => {
-        return (
-          <div className="col s2" key={producto.id}>
-            <div className="card">
-                <div className="card-image center-align">
-                  <img src={producto.imagenURL} alt=""></img>
-                </div>
-                <div className="valign-wrappwer center-align grey lighten-4">
-                  <div>
-                    {producto.produ}
-                    </div>
-                  <div>
-                    Precio: $ {producto.precio}
-                    </div>
-                  <div>
-                    Stock: {producto.stock} Unidades.
-                    </div>
-                 </div>
-            <div>
-              <a href="#addtocart">+ agregar al carrito</a>
-              </div>        
-            </div>
-          </div>
-        )
-      })}
+      <div className="valign-wrappwer left-align">
+          {cargando===false &&
+          <h3>Listado de productos</h3>
+          }
+        </div>
+      <div>
+					{products.map(producto => 
+								<Producto key={producto.id}
+								id={producto.id}
+								produ={producto.produ}
+								precio={producto.precio}
+								imagenURL={producto.imagenURL}
+								stock={producto.stock}
+								/>)}
+				</div>
     </div>
+    </>
   )
 }
 

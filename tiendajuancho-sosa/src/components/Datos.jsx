@@ -5,7 +5,8 @@ export const productos = [
 		precio: "10.00",
         imagenURL: "/images/cmadera.jpg",
 		stock:12,
-		descripcion: "Cuenco de madera fabricada artesanalmente por las tribu amazonica de los jibaros."
+		descripcion: "Cuenco de madera fabricada artesanalmente por las tribu amazonica de los jibaros.",
+		categoria: "Cuencos"
 	},
     {
 		id: 'f855fba0-06f0-4694-b03b-f8091c53f4bb',
@@ -13,7 +14,8 @@ export const productos = [
 		precio: "10.00",
         imagenURL: "/images/cceramico.jpg",
 		stock:23,
-		descripcion: "Cuenco ceramico fabricado en las profundidades de la China Comunista."
+		descripcion: "Cuenco ceramico fabricado en las profundidades de la China Comunista.",
+		categoria: "Cuencos"
 	},
     {
 		id: '9626e43a-3fa1-4335-9f65-31045161ccee',
@@ -21,7 +23,8 @@ export const productos = [
 		precio: "5.00",
         imagenURL: "/images/cucharababy.jpg",
 		stock:32,
-		descripcion: "Cuchara comun y corriente, sirve fundamentalmente para comprender si la realidad existe."
+		descripcion: "Cuchara comun y corriente, sirve fundamentalmente para comprender si la realidad existe.",
+		categoria: "Cubiertos"
 		
 	},
     {
@@ -30,7 +33,8 @@ export const productos = [
 		precio: "5.00",
         imagenURL: "/images/cucharaori.jpg",
 		stock:13,
-		descripcion: "Cuchara oriental caracteristica para comer ramen y otros tipo de sopas."
+		descripcion: "Cuchara oriental caracteristica para comer ramen y otros tipo de sopas.",
+		categoria: "Cubiertos"
 		
 	},
     {
@@ -39,6 +43,7 @@ export const productos = [
 		precio: "2.00",
         imagenURL: "/images/repasadorcla.jpg",
 		stock:55,
-		descripcion: "Repasador ordinario, nada mas que agregar."
+		descripcion: "Repasador ordinario, nada mas que agregar.",
+		categoria: "Textil"
 	}
 ];

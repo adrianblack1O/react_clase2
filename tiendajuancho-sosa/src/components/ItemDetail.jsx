@@ -1,11 +1,10 @@
-import { productos } from './Datos'
 import { React, useState, useEffect } from 'react';
-import 'materialize-css';
-import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
+import ItemCount from './ItemCount';
+import { productos } from './Datos'
+
 
 function ProduDetail ({produid}) {
-  //console.log(produid)
 
   const [products, setProducts] = useState([])
   const [cargando, setCargando] = useState(true)
@@ -33,7 +32,7 @@ async function traigoProductos () {
     <div className="white-text">Cargando</div>
     }
     {cargando===false &&
-    <Link to="/productos"> &lt; Volver</Link>
+    <Link to="/productos/todos"> &lt; Volver</Link>
     }
     <div className="row center-align">
             {cargando===true &&
@@ -53,19 +52,16 @@ async function traigoProductos () {
         return (          
           <div className="col s12 m7 left-align" key={producto.id}>
           <h2 className="header">{producto.produ}</h2>
-            <div className="card-image">
+            <div className="col card-image">
               <img src={producto.imagenURL} alt=""></img>
             </div>
             <div className="card-stacked">
               <div className="card-content">
                 <p>{producto.descripcion}</p>
               </div>
-              <div>
+              <div className="row">
                   <ItemCount stock={producto.stock}/>
                   </div>
-              <div>
-                <a className="light-blue-text text-darken-1" href="#addtocart">+ agregar al carrito</a>
-              </div>
             </div>
         </div>
         )

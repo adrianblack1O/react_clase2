@@ -1,9 +1,11 @@
 import React from 'react';
-import ListaProductos from './ItemList';
+import { useParams } from 'react-router';
+import Categorias from './ItemList';
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
+    const urlparam = useParams()
     return <>
-    <ListaProductos />
+    <Categorias catego={urlparam.catego}/>
     </>
 }
 

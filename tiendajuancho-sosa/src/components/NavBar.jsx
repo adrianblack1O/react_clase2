@@ -1,7 +1,7 @@
 import React from 'react';
-import CartWidget from './CartWidget';
-import logojuancho from '../assets/juancho.png';
 import { Link } from 'react-router-dom';
+import ProduDrop from './ProductoDrop';
+import logojuancho from '../assets/juancho.png';
 
 class NavBar extends React.Component {
     render() {
@@ -10,11 +10,10 @@ class NavBar extends React.Component {
             <div className="nav-wrapper light-blue darken-3">
               <Link to="/" className="brand-logo light-blue darken-3"><img src={logojuancho} width="60" height="auto" alt="logo Juancho"/>TiendaJuancho</Link>
               <ul id="nav-mobile" className="right hide-on-med-and-down light-blue darken-3">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/productos">Productos</Link></li>
-                <li><a href="#about">Quienes Somos?</a></li>
-                <li><a href="#contacto">Contactenos</a></li>
-                <CartWidget />
+                <li><ProduDrop /></li>
+                <li><a href="#about">QUIENES SOMOS?</a></li>
+                <li><a href="#contacto">CONTACTENOS</a></li>
+                <li><Link to="cart"><i className="material-icons">shopping_cart</i></Link></li>
               </ul>
             </div>
           </nav>

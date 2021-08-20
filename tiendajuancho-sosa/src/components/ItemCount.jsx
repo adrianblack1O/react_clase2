@@ -1,8 +1,10 @@
 import { React, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ItemCount = ({stock}) => {
 
 	const [counter, setCounter] = useState(0);
+	const [carrito, setCarr] = useState(0)
 
 	const quitar = () => {
 		if (counter > 0) {setCounter(counter-1)}
@@ -11,13 +13,26 @@ const ItemCount = ({stock}) => {
 	const agregar = () => {
 		if (counter < stock) {setCounter(counter+1)}
 	}
+	
+	const agrealcarri = () => {
+		setCarr(counter)
+		setCounter(0)
+	}
 
 	return(
 		<>
-  					<div>
+  					<div className="col s6">
+						<div className="row center-align">
   						<button onClick={quitar}className="black-text btn-flat grey lighten-2"> - </button>
-                        <a href="#stock" className="black-text btn-flat grey lighten-5">{counter}</a>
+                        <button className="black-text btn-flat grey lighten-5">{counter}</button>
                         <button onClick={agregar} className="black-text btn-flat grey lighten-2">+</button>
+						</div>
+						<button className="col s12 black-text btn-flat white lighten-2" onClick={agrealcarri}>+ agregar al carrito</button>
+						<div className="row">
+						{carrito > 0 &&
+						<Link to="/cart"><button className="col s12 white-text btn-flat light-blue darken-3">({carrito}) TERMINAR LA COMPRA</button></Link>
+						}
+						</div>
   					</div>
 		</>
 		)

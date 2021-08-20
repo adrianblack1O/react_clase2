@@ -1,20 +1,24 @@
-import { productos } from './Datos'
 import { React, useState, useEffect } from 'react';
+import { productos } from './Datos'
 import Producto from './Item'
 
-function ListaProductos () {
+function Categorias ({catego}) {
 
   const [products, setProducts] = useState([])
   const [cargando, setCargando] = useState(true)
 
-useEffect(() => {
-const traeProductos = () => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-      resolve (productos)
-		}, 2000);
-	});
-}
+  useEffect(() => {
+    const traeProductos = () => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          let produF = productos.filter(producto => (producto.categoria === catego))
+          if (produF.length !== 0) 
+          resolve (produF)
+          else
+          resolve (productos)
+        }, 1000);
+      });
+    }
 
 traigoProductos()
 async function traigoProductos () {
@@ -22,7 +26,7 @@ async function traigoProductos () {
   setProducts(trajeProductos)
   setCargando(false)
 }
-},[])
+},[catego])
   return (
     <>
     {cargando===true &&
@@ -62,4 +66,4 @@ async function traigoProductos () {
   )
 }
 
-export default ListaProductos;
+export default Categorias;

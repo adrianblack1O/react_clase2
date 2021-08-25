@@ -27,6 +27,7 @@ async function traigoProductos () {
 
 }
 },[produid])
+
   return<>
     {cargando===true &&
     <div className="white-text">Cargando</div>
@@ -60,7 +61,7 @@ async function traigoProductos () {
                 <p>{producto.descripcion}</p>
               </div>
               <div className="row">
-                  <ItemCount stock={producto.stock}/>
+                  <ItemCount item={producto} stock={producto.stock}/>
                   </div>
             </div>
         </div>

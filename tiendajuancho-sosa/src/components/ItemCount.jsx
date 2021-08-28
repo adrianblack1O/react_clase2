@@ -2,7 +2,7 @@ import { React, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { cartContext } from "../context/cartContext";
 
-const ItemCount = ({id, item, stock}) => {
+const ItemCount = ({id, item, precio, stock}) => {
 
 	const itemq = useContext(cartContext)
 
@@ -33,7 +33,7 @@ const ItemCount = ({id, item, stock}) => {
 						<button className="col s12 black-text btn-flat white lighten-2" onClick={agrealcarri}>+ agregar al carrito</button>
 						<div className="row">
 						{carrito > 0 &&
-						<Link to="/cart"><button className="col s12 white-text btn-flat light-blue darken-3" onClick={()=> itemq.ItemAdd({item, carrito})}>({carrito}) TERMINAR LA COMPRA</button></Link>
+						<Link to="/cart"><button className="col s12 white-text btn-flat light-blue darken-3" onClick={()=> itemq.ItemAdd({id, item, precio, carrito})}>({carrito}) TERMINAR LA COMPRA</button></Link>
 						}
 						</div>
   					</div>

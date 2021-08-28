@@ -61,7 +61,7 @@ async function traigoProductos () {
                 <p>{producto.descripcion}</p>
               </div>
               <div className="row">
-                  <ItemCount item={producto} stock={producto.stock}/>
+                  <ItemCount id={producto.id} item={producto.produ} precio={producto.precio} stock={producto.stock}/>
                   </div>
             </div>
         </div>

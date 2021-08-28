@@ -3,7 +3,7 @@ import { cartContext } from '../context/cartContext';
 
 const CartWidget = () => {
     const cartview = useContext(cartContext)
-    console.log(cartview.cart)
+    console.log(cartview.cartAux)
     
     return (
         <div><h1>Proximamente...</h1></div>

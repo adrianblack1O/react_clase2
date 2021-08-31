@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { cartContext } from "../context/cartContext";
 
 const Producto = function({id, produ, precio, stock, imagenURL}){
+
+    const itemq = useContext(cartContext)
+    const carrito = 1
+    const item = produ
 
     return (
         <div className="col s2" key={id}>
@@ -20,7 +25,7 @@ const Producto = function({id, produ, precio, stock, imagenURL}){
                   Stock: {stock} Unidades.
                   </div>
                   <div>
-                    <a href="#addtocart">+ agregar al carrito</a>
+                  <Link to="/cart"><button className="btn-flat" onClick={()=> itemq.ItemAdd({id, stock, item, precio, carrito})}>+ agregar al carrito</button></Link>
                     </div>     
                 </div>
             </div>

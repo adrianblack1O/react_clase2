@@ -2,61 +2,48 @@ import React,{ useState } from "react"
 
 export const cartContext = React.createContext()
 
-export default function CartContext( {children} ) {
+export default function CartContext ({children}) {
 
     const [cart, setCart] = useState([])
-    const [cartAux, setcartAux] = useState([])
-
-    var cartA = cart.cantidad
-
-    const cartF = (id) => {
-        const cartFe = cartAux.find(itemPrev => itemPrev.id === id)
-
-        return (cartFe===undefined ? false : true)
-    }
-
-    const ItemAdd = ({id, item, precio, carrito}) => {
-        const suma = carrito + cartA
-        if(cartF(id)){
-            alert("El item ya existe en el carrito!")
-
-            // setCart([cart,{
-            //     id: id,
-            //     item: item,
-            //     precio: precio,
-            //     cantidad: suma}])
-
-            setcartAux([...cartAux,{
-                id: id,
-                item: item,
-                precio: precio,
-                cantidad: suma}],
-                setCart({cantidad: suma})
-                )
-
-                //probar con agregar setcart
-
+    
+    const ItemAdd = ({id, item, precio, carrito, stock}) => {
+        const cartFe=cart.find(itemPrev => itemPrev.id === id)
+        if(cartFe){
+            const cartAux=cart.map((item)=>{
+                if(item.id===cartFe.id){
+                    item.cantidad+=carrito
+                }
+                return item
+            })
+            setCart(cartAux)
+            
         } else {
-            setCart({
+            setCart([...cart,{
                 id: id,
                 item: item,
                 precio: precio,
                 cantidad: carrito}
-                )
-                
-            setcartAux([...cartAux,{
-                id: id,
-                item: item,
-                precio: precio,
-                cantidad: carrito}])
+            ])
+            
         }
+    }
+    
+    const ItemRemove = ({carrit}) => {
+        const cartFe=cart.filter(itemPrev => itemPrev.id !== carrit.id)
+        const cartAux=cartFe
+        setCart(cartAux)
+    }
+
+    const ItemClear = () => {
+        setCart([])
     }
     
     return(
         <>
-            <cartContext.Provider value={{ cartContext, cart, cartAux, ItemAdd }}>
+            <cartContext.Provider value={{ cartContext, cart, ItemAdd, ItemRemove, ItemClear }}>
                 {children}
             </cartContext.Provider>
         </>
-    )
+    );
+    
 }

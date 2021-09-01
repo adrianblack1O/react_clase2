@@ -12,6 +12,7 @@ export default function CartContext ({children}) {
             const cartAux=cart.map((item)=>{
                 if(item.id===cartFe.id){
                     item.cantidad+=carrito
+                    item.precio=item.cantidad*precio
                 }
                 return item
             })
@@ -21,7 +22,7 @@ export default function CartContext ({children}) {
             setCart([...cart,{
                 id: id,
                 item: item,
-                precio: precio,
+                precio: precio*carrito,
                 cantidad: carrito}
             ])
             

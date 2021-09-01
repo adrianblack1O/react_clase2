@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProduDrop from './ProductoDrop';
 import logojuancho from '../assets/juancho.png';
+import CartWidget from './CartWidget';
 
 class NavBar extends React.Component {
     render() {
@@ -13,7 +14,7 @@ class NavBar extends React.Component {
                 <li><ProduDrop /></li>
                 <li><a href="#about">QUIENES SOMOS?</a></li>
                 <li><a href="#contacto">CONTACTENOS</a></li>
-                <li><Link to="cart"><i className="material-icons">shopping_cart</i></Link></li>
+                <li><Link to="cart"><CartWidget /></Link></li>
               </ul>
             </div>
           </nav>

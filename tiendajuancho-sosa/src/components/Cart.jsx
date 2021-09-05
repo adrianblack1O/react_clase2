@@ -28,8 +28,8 @@ const CartFINAL = () => {
                     <tr>
                         <th>Producto</th>
                         <th>Cantidad</th>
-                        <th>SUBTOTAL ($)</th>
-                        <th></th>
+                        <th>SUBTOTAL($)</th>
+                        <th><button className="btn-flat red white-text" onClick={()=> cartview.ItemClear()}>Vaciar el carrito</button></th>
                     </tr>
                 </thead>
         {cartfinal.map(carrit => {
@@ -47,7 +47,6 @@ const CartFINAL = () => {
            </table>
            <div className="right-align">
                <h3>Total: ${total}</h3>
-               <button className="btn-flat red white-text" onClick={()=> cartview.ItemClear()}>Limpiar el carrito</button>
                </div>
         </div>
         </div>

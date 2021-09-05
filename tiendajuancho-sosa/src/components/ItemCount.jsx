@@ -30,6 +30,7 @@ const ItemCount = ({id, item, precio, stock}) => {
                         <button className="black-text btn-flat grey lighten-5">{counter}</button>
                         <button onClick={agregar} className="black-text btn-flat grey lighten-2">+</button>
 						</div>
+						<p><b>Precio por unidad: ${precio}</b></p>
 						<button className="col s12 black-text btn-flat white lighten-2" onClick={agrealcarri}>+ agregar al carrito</button>
 						<div className="row">
 						{carrito > 0 &&

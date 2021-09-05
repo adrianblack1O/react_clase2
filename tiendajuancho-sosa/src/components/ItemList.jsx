@@ -1,32 +1,50 @@
-import { React, useState, useEffect } from 'react';
-import { productos } from './Datos'
+import { React, useState, useEffect } from 'react'
+import { allProdu, itemCat } from '../fbase/firebase'
 import Producto from './Item'
 
 function Categorias ({catego}) {
 
-  const [products, setProducts] = useState([])
-  const [cargando, setCargando] = useState(true)
-
-  useEffect(() => {
-    const traeProductos = () => {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          let produF = productos.filter(producto => (producto.categoria === catego))
-          if (produF.length !== 0) 
-          resolve (produF)
-          else
-          resolve (productos)
-        }, 1000);
-      });
-    }
-
-traigoProductos()
-async function traigoProductos () {
-	const trajeProductos = await traeProductos();
-  setProducts(trajeProductos)
-  setCargando(false)
+	const [ products, setProducts ] = useState([])
+	const [ cargando, setCargando ] = useState(true)
+	
+	useEffect(()=>{
+		if(catego != null){
+			const items = itemCat(catego)
+      items.then((data) => {
+        const itemsAux = []
+        data.forEach(item => {
+          itemsAux.push({ id:item.id,
+                          produ:item.data().produ, 
+                          precio:item.data().precio, 
+                          imagenURL:item.data().imagenURL, 
+                          stock:item.data().stock, 
+                          descripcion:item.data().descripcion, 
+                          categoria:item.data().categoria
+                        });
+        })
+        setProducts(itemsAux)
+        setCargando(false)
+      })
+		} else {
+		const items = allProdu()
+		items.then((data) => {
+		const itemsAux = []
+		data.forEach(item => {
+			itemsAux.push({ id:item.id,
+                      produ:item.data().produ, 
+                      precio:item.data().precio, 
+                      imagenURL:item.data().imagenURL, 
+                      stock:item.data().stock, 
+                      descripcion:item.data().descripcion, 
+                      categoria:item.data().categoria
+                    });
+		})
+    setProducts(itemsAux)
+    setCargando(false)
+  })
 }
 },[catego])
+
   return (
     <>
     {cargando===true &&

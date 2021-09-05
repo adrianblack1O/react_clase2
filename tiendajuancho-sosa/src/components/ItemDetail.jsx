@@ -25,7 +25,6 @@ useEffect(() => {
     <Link to="/"> &lt; Volver</Link>
     }
     <div className="row center-align">
-            <div>
             {cargando===true &&
         <div className="preloader-wrapper small active">
           <div className="spinner-layer spinner-blue-only">
@@ -39,10 +38,9 @@ useEffect(() => {
           </div>
         </div>
       }
-      </div>
       {[products].map(producto => {
         return (          
-          <div className="col s12 m7 left-align" key={produid}>
+          <div className="container col m7 left-align" key={produid}>
           <h2 className="header">{producto.produ}</h2>
             <div className="col card-image">
               <img src={producto.imagenURL} alt=""></img>
@@ -51,10 +49,9 @@ useEffect(() => {
               <div className="card-content">
                 <p>{producto.descripcion}</p>
               </div>
-              {cargando===false &&
-              <div className="center-align">
+              <div className="row">
                   <ItemCount id={produid} item={producto.produ} precio={producto.precio} stock={producto.stock}/>
-                  </div>}
+                  </div>
             </div>
         </div>
         )

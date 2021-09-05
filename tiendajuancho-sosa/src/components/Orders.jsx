@@ -1,49 +1,26 @@
 import { React, useState, useEffect } from 'react'
-import { allProdu, itemCat } from '../fbase/firebase'
-import Producto from './Item'
+import { allOrders } from '../fbase/firebase'
 
-function Categorias ({catego}) {
+function Orders () {
 
-	const [ products, setProducts ] = useState([])
+	const [ orders, setOrders ] = useState([])
 	const [ cargando, setCargando ] = useState(true)
 	
 	useEffect(()=>{
-		if(catego != null){
-			const items = itemCat(catego)
-      items.then((data) => {
-        const itemsAux = []
-        data.forEach(item => {
-          itemsAux.push({ id:item.id,
-                          produ:item.data().produ, 
-                          precio:item.data().precio, 
-                          imagenURL:item.data().imagenURL, 
-                          stock:item.data().stock, 
-                          descripcion:item.data().descripcion, 
-                          categoria:item.data().categoria
-                        });
-        })
-        setProducts(itemsAux)
-        setCargando(false)
-      })
-		} else {
-		const items = allProdu()
+		const items = allOrders()
 		items.then((data) => {
 		const itemsAux = []
 		data.forEach(item => {
 			itemsAux.push({ id:item.id,
-                      produ:item.data().produ, 
-                      precio:item.data().precio, 
-                      imagenURL:item.data().imagenURL, 
-                      stock:item.data().stock, 
-                      descripcion:item.data().descripcion, 
-                      categoria:item.data().categoria
+                      cliente:item.data().cliente,
+                      fecha:item.data().fecha
                     });
 		})
-    setProducts(itemsAux)
+    setOrders(itemsAux)
     setCargando(false)
   })
-}
-},[catego])
+},[])
+console.log(orders)
 
   return (
     <>
@@ -64,16 +41,16 @@ function Categorias ({catego}) {
           </div>
         </div>
       }
-      <div className="valign-wrappwer left-align">
+      {/* <div className="valign-wrappwer left-align">
           {!catego && cargando===false &&
           <h4><i>Listado de productos:</i></h4>
           }
           {catego && cargando===false &&
           <h4><i>Listado de productos: {catego}</i></h4>
           }
-        </div>
-      <div>
-					{products.map(producto => 
+        </div> */}
+      {/* <div>
+					{orders.map(producto => 
 								<Producto key={producto.id}
 								id={producto.id}
 								produ={producto.produ}
@@ -81,10 +58,10 @@ function Categorias ({catego}) {
 								imagenURL={producto.imagenURL}
 								stock={producto.stock}
 								/>)}
-				</div>
+				</div> */}
     </div>
     </>
   )
 }
 
-export default Categorias;
+export default Orders;

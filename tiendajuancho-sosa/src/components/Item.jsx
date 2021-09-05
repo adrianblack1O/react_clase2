@@ -9,7 +9,8 @@ const Producto = function({id, produ, precio, stock, imagenURL}){
     const item = produ
 
     return (
-        <div className="col s2" key={id}>
+        <div className="container" key={id}>
+          <div className="col">
           <div className="card">
               <Link className="card-image center-align" to={`/productos/item/${id}`}>
                 <img src={imagenURL} alt=""></img>
@@ -29,6 +30,7 @@ const Producto = function({id, produ, precio, stock, imagenURL}){
                     </div>     
                 </div>
             </div>
+        </div>
         </div>
         )
 }

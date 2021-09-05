@@ -3,6 +3,7 @@ import ItemDetailContainer from "../components/ItemDetailContainer";
 import ItemListContainer from "../components/ItemListContainer";
 import NavBar from "../components/NavBar";
 import CartFINAL from "../components/Cart";
+import Orders from "../components/Orders";
 
 export default function Rooter(){
 
@@ -14,6 +15,7 @@ return(
 			<Route exact path='/productos/:catego' component={ItemListContainer}/>
            	<Route exact path='/productos/item/:produid' component={ItemDetailContainer}/>
 			<Route exact path='/cart' component={CartFINAL}/>
+			<Route exact path='/checkout' component={Orders}/>
 		</Switch>
 	</BrowserRouter>
 	)

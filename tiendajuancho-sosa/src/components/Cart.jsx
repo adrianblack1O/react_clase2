@@ -55,7 +55,7 @@ const CartFINAL = () => {
            </table>
            <div className="right-align">
                <h3>Total: ${total}</h3>
-               <Link to="/checkout"><button className="btn-flat blue white-text" onClick={()=> addOrder(cartfinal,total, fecha, cliente)}>Finalizar la compra</button></Link>
+               <Link to="/checkout"><button className="btn-flat green darken-1 white-text" onClick={()=> {addOrder(cartfinal,total, fecha, cliente); cartview.ItemClear();}}>Finalizar la compra</button></Link>
                </div>
         </div>
         </div>

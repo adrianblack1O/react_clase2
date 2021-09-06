@@ -3,7 +3,7 @@ import { allOrders } from '../fbase/firebase'
 
 function Orders () {
 
-	const [ orders, setOrders ] = useState([])
+	const [ order, setOrder ] = useState([])
 	const [ cargando, setCargando ] = useState(true)
 	
 	useEffect(()=>{
@@ -13,14 +13,15 @@ function Orders () {
 		data.forEach(item => {
 			itemsAux.push({ id:item.id,
                       cliente:item.data().cliente,
-                      fecha:item.data().fecha
+                      items:item.data().items,
+                      fecha:item.data().fecha,
+                      total:item.data().total
                     });
 		})
-    setOrders(itemsAux)
+    setOrder(itemsAux)
     setCargando(false)
   })
 },[])
-console.log(orders)
 
   return (
     <>
@@ -41,24 +42,36 @@ console.log(orders)
           </div>
         </div>
       }
-      {/* <div className="valign-wrappwer left-align">
-          {!catego && cargando===false &&
-          <h4><i>Listado de productos:</i></h4>
-          }
-          {catego && cargando===false &&
-          <h4><i>Listado de productos: {catego}</i></h4>
-          }
-        </div> */}
-      {/* <div>
-					{orders.map(producto => 
-								<Producto key={producto.id}
-								id={producto.id}
-								produ={producto.produ}
-								precio={producto.precio}
-								imagenURL={producto.imagenURL}
-								stock={producto.stock}
-								/>)}
-				</div> */}
+      <div className="container">
+      {order.map(lastorder => {
+      return(
+      <div key={lastorder.id}> 
+      <h4><i>La orden numero:</i> <b>{lastorder.id}</b> <i>fue realizada con exito!</i></h4>
+          <div className="card">
+          <table>
+          <thead className="light-blue lighten-5">
+              <tr>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+              </tr>
+          </thead>
+          {lastorder.items.map(resumen => {
+          return(
+              <tbody key={resumen.id}>
+                  <tr>
+                  <td>{resumen.item}</td>
+                  <td>{resumen.cantidad}</td>
+                  </tr>
+              </tbody>
+              )
+          })}
+          </table>
+          </div>
+          <h2 className="right-align">Total: <i>${lastorder.total} </i></h2>
+      </div>
+      )
+      })}
+      </div>
     </div>
     </>
   )

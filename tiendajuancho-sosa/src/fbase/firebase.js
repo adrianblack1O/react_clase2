@@ -3,6 +3,8 @@ import { getFirestore } from 'firebase/firestore';
 import {
   collection,
   //setDoc,
+  limit,
+  orderBy,
   addDoc,
   getDocs,
   getDoc,
@@ -28,9 +30,16 @@ const allProdu = () => {
 	return query
 }
 
+// const allOrders = () => {
+//     const queryOrders = getDocs(collection(db, 'orders'))
+//     return queryOrders
+//     }
+
 const allOrders = () => {
-	const queryOrders = getDocs(collection(db, 'orders'))
-	return queryOrders
+  const q = collection(db, 'orders')
+  const q2 = query(q, orderBy("fecha", "desc"), limit(1));
+  const q3 = getDocs(q2)
+  return q3
 }
 
 const itemCat = (catego) =>{

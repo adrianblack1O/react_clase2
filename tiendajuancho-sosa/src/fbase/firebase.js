@@ -30,11 +30,6 @@ const allProdu = () => {
 	return query
 }
 
-// const allOrders = () => {
-//     const queryOrders = getDocs(collection(db, 'orders'))
-//     return queryOrders
-//     }
-
 const allOrders = () => {
   const q = collection(db, 'orders')
   const q2 = query(q, orderBy("fecha", "desc"), limit(1));
@@ -60,11 +55,8 @@ const addOrder = (cartfinal, total, fecha, cliente) => {
     cliente: cliente,
     items: cartfinal,
     fecha: fecha,
-    total: total,
+    total: total
 })
-
-const orderid = final.then((data)=>data.id)
-console.log(orderid)
 
 return final
 }

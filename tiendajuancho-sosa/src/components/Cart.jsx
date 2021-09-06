@@ -16,6 +16,14 @@ const CartFINAL = () => {
         phone: '01112344567',
         email: 'mail@mail.com.ar'
         }
+    
+    const addOrderAux = () => {
+        const order=addOrder(cartfinal,total, fecha, cliente)
+        order.then((data)=>{
+            cartview.orderId(data.id)
+            console.log(data.id)
+        })
+    }
 
     return <>
      {total===0 &&
@@ -55,7 +63,7 @@ const CartFINAL = () => {
            </table>
            <div className="right-align">
                <h3>Total: ${total}</h3>
-               <Link to="/checkout"><button className="btn-flat green darken-1 white-text" onClick={()=> {addOrder(cartfinal,total, fecha, cliente); cartview.ItemClear();}}>Finalizar la compra</button></Link>
+               <Link to="/checkout"><button className="btn-flat green darken-1 white-text" onClick={()=> {addOrderAux()}}>Finalizar la compra</button></Link>
                </div>
         </div>
         </div>

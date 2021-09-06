@@ -4,14 +4,14 @@ export const cartContext = React.createContext()
 
 export default function CartContext ({children}) {
 
-    const [cart, setCart] = useState([])
+    const [ order, setOrderid ] = useState()
+    const [ cart, setCart ] = useState([])
     
     const ItemAdd = ({id, item, precio, carrito, stock}) => {
         const cartFe=cart.find(itemPrev => itemPrev.id === id)
         if(cartFe){
             const cartAux=cart.map((item)=>{
                 if(item.id===cartFe.id){
-                    console.log(item.cantidad)
                     item.cantidad+=carrito
                     item.precio=item.cantidad*precio
                 }
@@ -39,10 +39,14 @@ export default function CartContext ({children}) {
     const ItemClear = () => {
         setCart([])
     }
+
+    const orderId = (id) => {
+        setOrderid([])
+    }
     
     return(
         <>
-            <cartContext.Provider value={{ cartContext, cart, ItemAdd, ItemRemove, ItemClear }}>
+            <cartContext.Provider value={{ cartContext, cart, order, ItemAdd, ItemRemove, ItemClear, orderId }}>
                 {children}
             </cartContext.Provider>
         </>

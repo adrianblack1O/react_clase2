@@ -14,7 +14,7 @@ class NavBar extends React.Component {
                 <li><ProduDrop /></li>
                 <li><a href="#about">QUIENES SOMOS?</a></li>
                 <li><a href="#contacto">CONTACTENOS</a></li>
-                <li><Link to="cart"><CartWidget /></Link></li>
+                <li><Link to="/cart"><CartWidget /></Link></li>
               </ul>
             </div>
           </nav>

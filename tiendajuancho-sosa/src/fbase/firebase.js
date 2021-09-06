@@ -60,8 +60,12 @@ const addOrder = (cartfinal, total, fecha, cliente) => {
     cliente: cliente,
     items: cartfinal,
     fecha: fecha,
-    total: total
+    total: total,
 })
+
+const orderid = final.then((data)=>data.id)
+console.log(orderid)
+
 return final
 }
 

@@ -18,10 +18,9 @@ const CartFINAL = () => {
         }
     
     const addOrderAux = () => {
-        const order=addOrder(cartfinal,total, fecha, cliente)
+        const order= addOrder(cartfinal,total, fecha, cliente)
         order.then((data)=>{
             cartview.orderId(data.id)
-            console.log(data.id)
         })
     }
 

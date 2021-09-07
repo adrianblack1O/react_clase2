@@ -2,9 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 import {
   collection,
-  //setDoc,
-  limit,
-  orderBy,
   addDoc,
   getDocs,
   getDoc,
@@ -30,11 +27,10 @@ const allProdu = () => {
 	return query
 }
 
-const allOrders = () => {
-  const q = collection(db, 'orders')
-  const q2 = query(q, orderBy("fecha", "desc"), limit(1));
-  const q3 = getDocs(q2)
-  return q3
+const orderSolo = (orderid) => {
+  const q = doc(db, 'orders', orderid)
+  const q2 = getDoc(q)
+  return q2
 }
 
 const itemCat = (catego) =>{
@@ -61,4 +57,4 @@ const addOrder = (cartfinal, total, fecha, cliente) => {
 return final
 }
 
-export { allProdu, itemCat, itemSolo, addOrder, allOrders };
+export { allProdu, itemCat, itemSolo, addOrder, orderSolo };

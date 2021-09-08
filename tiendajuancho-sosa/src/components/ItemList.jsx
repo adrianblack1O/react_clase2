@@ -47,11 +47,9 @@ function Categorias ({catego}) {
 
   return (
     <>
-    {cargando===true &&
-    <div className="white-text">Cargando</div>
-    }
     <div className="row center-align">
       {cargando===true &&
+      <div className="row center-align"  style={{ margin: '1% auto' }}>
         <div className="preloader-wrapper small active">
           <div className="spinner-layer spinner-blue-only">
             <div className="circle-clipper left">
@@ -63,6 +61,7 @@ function Categorias ({catego}) {
             </div>
           </div>
         </div>
+      </div>
       }
       <div className="valign-wrappwer left-align">
           {!catego && cargando===false &&

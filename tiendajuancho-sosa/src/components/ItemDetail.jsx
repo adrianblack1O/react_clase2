@@ -18,28 +18,25 @@ useEffect(() => {
     },[produid])
     
   return<>
-    {cargando===true &&
-    <div className="white-text">Cargando</div>
-    }
     {cargando===false &&
     <Link to="/"> &lt; Volver</Link>
     }
     <div className="row center-align">
-            <div>
             {cargando===true &&
-        <div className="preloader-wrapper small active">
-          <div className="spinner-layer spinner-blue-only">
-            <div className="circle-clipper left">
-              <div className="circle"></div>
-            </div><div className="gap-patch">
-              <div className="circle"></div>
-            </div><div className="circle-clipper right">
-              <div className="circle"></div>
+            <div className="row center-align"  style={{ margin: '1% auto' }}>
+              <div className="preloader-wrapper small active">
+                <div className="spinner-layer spinner-blue-only">
+                  <div className="circle-clipper left">
+                    <div className="circle"></div>
+                  </div><div className="gap-patch">
+                    <div className="circle"></div>
+                  </div><div className="circle-clipper right">
+                    <div className="circle"></div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      }
-      </div>
+            }
       {[products].map(producto => {
         return (          
           <div className="col s12 m7 left-align" key={produid}>

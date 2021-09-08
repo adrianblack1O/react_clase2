@@ -42,7 +42,6 @@ export default function CartContext ({children}) {
 
     const orderId = (id) => {
         setOrderid(id)
-        console.log('id nuevo guardado',id)
     }
     
     return(

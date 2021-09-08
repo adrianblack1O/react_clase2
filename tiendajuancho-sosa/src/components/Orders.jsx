@@ -1,36 +1,19 @@
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { cartContext } from "../context/cartContext";
-import { orderSolo } from "../fbase/firebase";
+import { Link } from "react-router-dom";
 
 function Orders () { 
 
         const cartview = useContext(cartContext)
         const orderid = cartview.order
-        // ESTA PARTE ES PARA MIRAR!
-        //const orderid = '9FHa1n5OtLHToBPDlsWu'
+        const cart = cartview.cart
+        const total = cart.reduce((total, amount) => total + amount.precio, 0);
 
-        const [orderfinal, setOrderfinal] = useState([])
-        const [cargando, setCargando] = useState(true)
-      
-        useEffect(()=>{
-                const item = orderSolo(orderid)
-                item.then((data) => {
-                  setOrderfinal([data.data()])
-                  setCargando(false)
-               })
-              },[orderid])
 
-                
-                console.log(orderfinal)
-
-                return (
-                        <>
-                        {cargando===true &&
-                        <div className="white-text">Cargando</div>
-                        }
-                        <div className="row center-align">
-                          {cargando===true &&
+                return <>
+                          {!orderid &&
+                          <div className="row center-align"  style={{ margin: '1% auto' }}>
                             <div className="preloader-wrapper small active">
                               <div className="spinner-layer spinner-blue-only">
                                 <div className="circle-clipper left">
@@ -42,40 +25,40 @@ function Orders () {
                                 </div>
                               </div>
                             </div>
-                          }
-                          <div className="container">
-                          {orderfinal.map(lastorder => {
-                          return(
-                          <div key={orderid}> 
-                          <h4><i>La orden numero:</i> <b>{orderid}</b> <i>fue realizada con exito!</i></h4>
-                              <div className="card">
-                              <table>
-                              <thead className="light-blue lighten-5">
-                                  <tr>
-                                      <th>Producto</th>
-                                      <th>Cantidad</th>
-                                  </tr>
-                              </thead>
-                              {lastorder.items.map(resumen => {
-                              return(
-                                  <tbody key={orderid}>
-                                      <tr>
-                                      <td>{resumen.item}</td>
-                                      <td>{resumen.cantidad}</td>
-                                      </tr>
-                                  </tbody>
-                                  )
-                              })}
-                              </table>
-                              </div>
-                              <h2 className="right-align">Total: <i>${lastorder.total} </i></h2>
                           </div>
-                          )
-                          })}
+                          }
+                          {orderid &&
+                          <div className="container center-align">
+                          <h4><i>La orden numero:</i> <b>{orderid}</b> <i>fue realizada con exito!</i></h4>
+                          </div>
+                        }
+                        {orderid &&
+                        <div className="container">
+                        <div className="card align-right">
+                          <table className="">
+                          <thead className="light-blue lighten-5">
+                              <tr>
+                                  <th>Producto</th>
+                                  <th>Cantidad</th>
+                              </tr>
+                          </thead>
+                          {cart.map( order =>
+                              <tbody key={order.id}>
+                              <tr>
+                              <td>{order.item}</td>
+                              <td><b>{order.cantidad}</b></td>
+                              </tr>
+                          </tbody>
+                          )}
+                          </table>
+                          </div>
+                          <h2 className="right-align">Total: <i>${total} </i></h2>
+                          <div className="center-align">
+                          <Link to="/"><button className="col s12 white-text btn green darken-1" onClick={()=> {cartview.ItemClear(); cartview.orderId();}}>Volver al inicio</button></Link>
                           </div>
                         </div>
-                        </>
-                      )
+                        }
+                      </>
 }
 
 export default Orders;

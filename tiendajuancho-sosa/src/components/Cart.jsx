@@ -27,16 +27,16 @@ const CartFINAL = () => {
     return <>
      {total===0 &&
         <div className="col center-align">
-         <h1><i>Carrito vacio...</i></h1>
+         <h3><i>Carrito vacio...</i></h3>
          <div>
              <img src={emptycart} alt=""></img>
          </div>
-         <Link to="/"><button className="btn-flat blue white-text">Volver a la tienda</button></Link>
+         <Link to="/"><button className="btn-flat green darken-1 white-text">Volver a la tienda</button></Link>
          </div>
         }
         {total!==0 &&
-        <div>
-        <h2>Carrito de compras:</h2>
+        <div className="container">
+        <h4>Carrito de compras:</h4>
         <div className="container">
             <table>
                 <thead>
@@ -44,7 +44,7 @@ const CartFINAL = () => {
                         <th>Producto</th>
                         <th>Cantidad</th>
                         <th>SUBTOTAL($)</th>
-                        <th><button className="btn-flat red white-text" onClick={()=> cartview.ItemClear()}>Limpiar el carrito</button></th>
+                        <th><button className="btn-flat red white-text" onClick={()=> cartview.ItemClear()}>Vaciar</button></th>
                     </tr>
                 </thead>
         {cartfinal.map(carrit => {
@@ -61,7 +61,7 @@ const CartFINAL = () => {
                 })}
            </table>
            <div className="right-align">
-               <h3>Total: ${total}</h3>
+               <h4>Total: ${total}</h4>
                <Link to="/checkout"><button className="btn-flat green darken-1 white-text" onClick={()=> {addOrderAux()}}>Finalizar la compra</button></Link>
                </div>
         </div>

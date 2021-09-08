@@ -26,7 +26,7 @@ const Producto = function({id, produ, precio, stock, imagenURL}){
                   Stock: {stock} Unidades.
                   </div>
                   <div>
-                  <button className="btn-flat" onClick={()=> itemq.ItemAdd({id, stock, item, precio, carrito})}>+ agregar al carrito</button>
+                  <button className="black-text btn-flat grey lighten-3" onClick={()=> itemq.ItemAdd({id, stock, item, precio, carrito})}>+ agregar al carrito</button>
                     </div>     
                 </div>
             </div>

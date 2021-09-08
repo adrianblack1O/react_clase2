@@ -63,7 +63,7 @@ function Categorias ({catego}) {
         </div>
       </div>
       }
-      <div className="valign-wrappwer left-align">
+      <div className="container valign-wrappwer left-align">
           {!catego && cargando===false &&
           <h4><i>Listado de productos:</i></h4>
           }

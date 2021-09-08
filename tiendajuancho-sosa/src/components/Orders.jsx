@@ -29,7 +29,7 @@ function Orders () {
                           }
                           {orderid &&
                           <div className="container center-align">
-                          <h4><i>La orden numero:</i> <b>{orderid}</b> <i>fue realizada con exito!</i></h4>
+                          <h5><i>La orden numero:</i> <b>{orderid}</b> <i>fue realizada con exito!</i></h5>
                           </div>
                         }
                         {orderid &&
@@ -52,7 +52,7 @@ function Orders () {
                           )}
                           </table>
                           </div>
-                          <h2 className="right-align">Total: <i>${total} </i></h2>
+                          <h4 className="right-align">Total: <i>${total} </i></h4>
                           <div className="center-align">
                           <Link to="/"><button className="col s12 white-text btn green darken-1" onClick={()=> {cartview.ItemClear(); cartview.orderId();}}>Volver al inicio</button></Link>
                           </div>

@@ -10,8 +10,7 @@ const CartWidget = () => {
     return <>
             {itemst!==0 &&
             <ul>
-            <li><i className="material-icons left">shopping_cart</i></li>
-            <li><span>({itemst})</span></li>
+            <li><i className="material-icons center left">shopping_cart</i>({itemst})</li>       
             </ul>
             }
     </>

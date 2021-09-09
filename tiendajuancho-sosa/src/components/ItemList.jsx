@@ -63,7 +63,7 @@ function Categorias ({catego}) {
         </div>
       </div>
       }
-      <div className="container valign-wrappwer left-align">
+      <div className="container left-align">
           {!catego && cargando===false &&
           <h4><i>Listado de productos:</i></h4>
           }
@@ -72,16 +72,17 @@ function Categorias ({catego}) {
           }
         </div>
       <div>
-					{products.map(producto => 
+					{products.map(producto =>
 								<Producto key={producto.id}
 								id={producto.id}
 								produ={producto.produ}
 								precio={producto.precio}
 								imagenURL={producto.imagenURL}
 								stock={producto.stock}
-								/>)}
+								/>
+                )}
 				</div>
-    </div>
+      </div>
     </>
   )
 }

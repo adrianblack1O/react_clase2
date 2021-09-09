@@ -37,7 +37,8 @@ useEffect(() => {
               </div>
             </div>
             }
-      {[products].map(producto => {
+      {cargando===false &&
+      [products].map(producto => {
         return (          
           <div className="container col s12 m7">
           <h2 className="header left-align">{producto.produ}</h2>

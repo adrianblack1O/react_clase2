@@ -6,6 +6,7 @@ export default function CartContext ({children}) {
 
     const [ order, setOrderid ] = useState()
     const [ cart, setCart ] = useState([])
+    const [ dcliente, setDcliente ] = useState()
     
     const ItemAdd = ({id, item, precio, carrito, stock}) => {
         const cartFe=cart.find(itemPrev => itemPrev.id === id)
@@ -43,10 +44,14 @@ export default function CartContext ({children}) {
     const orderId = (id) => {
         setOrderid(id)
     }
+
+    const datosCliente = (cliente) => {
+        setDcliente(cliente)
+    }
     
     return(
         <>
-            <cartContext.Provider value={{ cartContext, cart, order, ItemAdd, ItemRemove, ItemClear, orderId }}>
+            <cartContext.Provider value={{ cartContext, cart, order, dcliente, ItemAdd, ItemRemove, ItemClear, orderId, datosCliente }}>
                 {children}
             </cartContext.Provider>
         </>

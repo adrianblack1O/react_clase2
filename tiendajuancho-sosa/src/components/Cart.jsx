@@ -3,6 +3,7 @@ import { cartContext } from '../context/cartContext';
 import emptycart from '../assets/emptycart.png';
 import { Link } from 'react-router-dom';
 import { addOrder } from '../fbase/firebase';
+import DatosPersonales from './CheckoutForm';
 
 const CartFINAL = () => {
     
@@ -10,21 +11,21 @@ const CartFINAL = () => {
     const cartfinal = cartview.cart
     const fecha = new Date().toLocaleString()
     const total = cartfinal.reduce((total, amount) => total + amount.precio, 0);
-    const cliente = {
-        Nombre: 'Adrian',
-        Apellido: 'Sosa',
-        phone: '01112344567',
-        email: 'mail@mail.com.ar'
-        }
-    
+    const clientef = cartview.dcliente
+
     const addOrderAux = () => {
-        const order= addOrder(cartfinal,total, fecha, cliente)
+        const order= addOrder(cartfinal,total, fecha, clientef)
         order.then((data)=>{
             cartview.orderId(data.id)
         })
     }
 
     return <>
+    {total !== 0 && clientef === undefined &&
+    <div className="container">
+    <DatosPersonales />
+    </div>
+    }
      {total===0 &&
         <div className="col center-align">
          <h3><i>Carrito vacio...</i></h3>
@@ -34,7 +35,7 @@ const CartFINAL = () => {
          <Link to="/"><button className="btn-flat green darken-1 white-text">Volver a la tienda</button></Link>
          </div>
         }
-        {total!==0 &&
+        {clientef !== undefined &&
         <div className="container">
         <h4>Carrito de compras:</h4>
         <div className="container">

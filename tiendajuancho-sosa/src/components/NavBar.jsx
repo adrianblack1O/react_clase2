@@ -7,11 +7,11 @@ class NavBar extends React.Component {
     render() {
         return ( 
             <>
-            <div class="navbar-fixed valign-wrapper">
+            <div className="navbar-fixed valign-wrapper">
             <nav>
             <div className="nav-wrapper light-blue darken-3">
               <Link to="/" className="brand-logo light-blue darken-3"><img src={logojuancho} width="250" height="auto" alt="logo Juancho"/></Link>
-              <Link to="/cart"><a href="#cart" data-target="none" className="sidenav-trigger right"><CartWidget /></a></Link>
+              <Link to="/cart" href="#cart" data-target="none" className="sidenav-trigger right"><CartWidget /></Link>
               <a href="#sidenav" data-target="mobile" className="sidenav-trigger left"><i className="material-icons">menu</i></a>
               <ul id="nav-mobile" className="right hide-on-med-and-down light-blue darken-3">
                 <li><Link to="/productos/Cuencos">Cuencos</Link></li>

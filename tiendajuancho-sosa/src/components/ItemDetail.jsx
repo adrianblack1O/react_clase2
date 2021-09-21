@@ -40,7 +40,7 @@ useEffect(() => {
       {cargando===false &&
       [products].map(producto => {
         return (          
-          <div className="container col s12 m7">
+          <div className="container col s12 m7" key={produid}>
           <h2 className="header left-align">{producto.produ}</h2>
           <div className="card horizontal">
             <div className="card-image">
